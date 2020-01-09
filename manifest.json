@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+
+  "name": "Doctor Chester",
+  "description": "This extension plays a game of chess on lichess.com",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Dr Chester",
+    "default_popup":  "popup.html"
+  },
+
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+
+  "content_scripts": [
+    {
+      "js": [ "jquery.js", "content.js" ],
+      "matches": [ "https://lichess.org/*" ]
+    }
+  ],
+
+  "background": {
+    "scripts": [ "stockfish.js", "background.js" ],
+    "persistent": false
+  },
+
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "https://lichess.org/*"
+  ],
+  "options_page": "options.html"
+}
